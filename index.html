@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWYNEX - Enterprise Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <div class="logo"><h1>SWYNEX</h1><p>Enterprise Dashboard</p></div>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="#dashboard" aria-current="page">Dashboard</a></li>
+      <li><a href="#expenses">Expenses</a></li>
+      <li><a href="#reports">Reports</a></li>
+      <li><a href="#settings">Settings</a></li>
+    </ul>
+  </nav>
+  <button type="button" id="openProfileBtn" aria-haspopup="dialog">Profile</button>
+</header>
+
+<div class="layout">
+<aside aria-label="Sidebar navigation">
+  <nav aria-label="Sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="#dashboard">Overview</a></li>
+      <li><a href="#expenses">My Expenses</a></li>
+      <li><a href="#add-expense">Add Expense</a></li>
+      <li><a href="#reports">Reports</a></li>
+    </ul>
+  </nav>
+  <section aria-labelledby="quick-title">
+    <h3 id="quick-title">Quick Stats</h3>
+    <p>Total: <strong>₹12,450</strong></p>
+  </section>
+</aside>
+
+<main id="main">
+  <h2 id="dashboard">Dashboard Overview</h2>
+
+  <section aria-labelledby="cards-title">
+    <h3 id="cards-title">Summary Cards</h3>
+    <div class="cards">
+      <article><h4>Total Expenses</h4><p>₹12,450</p></article>
+      <article><h4>This Month</h4><p>₹4,200</p></article>
+      <article><h4>Pending</h4><p>3 items</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="table-title">
+    <h3 id="table-title">Recent Expenses</h3>
+    <table>
+      <caption>Recent expenses list - 3 rows</caption>
+      <thead><tr><th scope="col">Date</th><th scope="col">Title</th><th scope="col">Category</th><th scope="col">Amount</th><th scope="col">Action</th></tr></thead>
+      <tbody>
+        <tr><td>20 Nov 2026</td><td>Lunch</td><td>Food</td><td>₹250</td><td><button type="button" data-open-modal="viewModal">View</button></td></tr>
+        <tr><td>21 Nov 2026</td><td>Train Ticket</td><td>Travel</td><td>₹850</td><td><button type="button" data-open-modal="viewModal">View</button></td></tr>
+        <tr><td>22 Nov 2026</td><td>Rent</td><td>Housing</td><td>₹8,000</td><td><button type="button" data-open-modal="viewModal">View</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section aria-labelledby="form-title" id="add-expense">
+    <h3 id="form-title">Add New Expense</h3>
+    <form id="expenseForm" novalidate>
+      <fieldset>
+        <legend>Expense Details</legend>
+        <div>
+          <label for="title">Expense Title <span aria-hidden="true">*</span></label>
+          <input type="text" id="title" name="title" required aria-required="true" aria-describedby="title-hint" placeholder="e.g. Lunch">
+          <p id="title-hint">Enter a short name, e.g. Lunch, Train.</p>
+        </div>
+        <div>
+          <label for="amount">Amount (₹) <span aria-hidden="true">*</span></label>
+          <input type="number" id="amount" name="amount" min="1" required aria-required="true" placeholder="100">
+        </div>
+        <div>
+          <label for="category">Category</label>
+          <select id="category" name="category" aria-label="Select expense category">
+            <option value="food">Food</option>
+            <option value="travel">Travel</option>
+            <option value="rent">Rent</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="3" aria-label="Optional notes"></textarea>
+        </div>
+        <div role="group" aria-labelledby="pay-label">
+          <p id="pay-label">Payment Method</p>
+          <label><input type="radio" name="pay" value="upi" checked> UPI</label>
+          <label><input type="radio" name="pay" value="card"> Card</label>
+          <label><input type="radio" name="pay" value="cash"> Cash</label>
+        </div>
+        <div><label><input type="checkbox" id="agree" required> I confirm this expense is correct</label></div>
+        <p id="form-error" role="alert" aria-live="assertive"></p>
+        <button type="submit">Add Expense</button>
+        <button type="reset">Clear Form</button>
+      </fieldset>
+    </form>
+  </section>
+</main>
+</div>
+
+<footer><p>&copy; 2026 SWYNEX - Built with Semantic HTML5 + WCAG 2.1 AA</p></footer>
+
+<dialog id="viewModal" aria-labelledby="modal-title" aria-modal="true">
+  <h3 id="modal-title">Expense Details</h3>
+  <p>This is an accessible modal. Press Esc to close.</p>
+  <p>Title: Lunch | Amount: ₹250 | Category: Food</p>
+  <button type="button" data-close-modal>Close</button>
+</dialog>
+
+<dialog id="profileModal" aria-labelledby="profile-title" aria-modal="true">
+  <h3 id="profile-title">Profile</h3>
+  <p>Name: Nethra Raju | Role: Full Stack Developer</p>
+  <button type="button" data-close-modal>Close</button>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>
